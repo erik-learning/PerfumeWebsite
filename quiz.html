@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Perfume Quiz</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <h1>Create Your Own Aroma</h1>
+
+    <div id="error"></div>
+
+    <!-- Question 1 -->
+    <!-- Question 1 -->
+    <div class="question" id="question1">
+      <h2>Which bottle would you choose?</h2>
+      <div id="bottle-slider">
+          <button id="prev" onclick="slideBottles(-1)">&#10094;</button>
+          <div class="bottle-option active" onclick="selectBottle(0)">
+            <img src="1.png" alt="15ml">
+            <p>15ml</p>
+          </div>
+          <div class="bottle-option" onclick="selectBottle(1)">
+            <img src="2.png" alt="20ml">
+            <p>20ml</p>
+          </div>
+          <div class="bottle-option" onclick="selectBottle(2)">
+            <img src="3.png" alt="50ml">
+            <p>50ml</p>
+          </div>
+          <div class="bottle-option" onclick="selectBottle(3)">
+            <img src="4.png" alt="100ml">
+            <p>100ml</p>
+          </div>
+          <button id="next" onclick="slideBottles(1)">&#10095;</button>
+      </div>
+      <button onclick="validateAndProceed(1, 2)">Next</button>
+    </div>
+
+
+
+
+    </div> <!-- This closing tag was missing -->
+
+    <!-- Question 2 -->
+    <div class="question" id="question2" style="display: none;">
+        <h2>How would you like to name your perfume?</h2>
+        <input type="text" id="perfumeName" placeholder="Enter perfume name">
+        <button onclick="validateAndProceed(2, 3)">Next</button>
+    </div>
+
+    <!-- Question 3 -->
+    <div class="question" id="question3" style="display: none;">
+        <h2>Specify your skin type:</h2>
+        <label><input type="radio" name="skin" value="oily"> Oily</label><br>
+        <label><input type="radio" name="skin" value="dry"> Dry</label><br>
+        <label><input type="radio" name="skin" value="combination"> Combination</label><br>
+        <button onclick="validateAndProceed(3, 'result')">Create my perfume</button>
+    </div>
+    
+    <!-- Result -->
+    <div id="result" style="display: none;">
+        <img src="1.png" alt="Perfume bottle">
+        <svg width="200" height="200">
+          <path id="curve" d="M1,100 Q200, 150  600,-600" fill="transparent"/>
+          <text width="200">
+            <textPath id="curvedText" href="#curve">
+            </textPath>
+          </text>
+        </svg>
+        <div id="perfumeLabel"></div>
+    </div>
+    
+    <script src="quiz-part.js"></script>
+</body>
+</html>
