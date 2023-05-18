@@ -4,68 +4,87 @@
     <title>Personalised Perfumes</title>
     <style>
         body {
-            background: url('background-image.jpg') no-repeat center center fixed; 
-            -webkit-background-size: cover;
-            -moz-background-size: cover;
-            -o-background-size: cover;
-            background-size: cover;
+            background: linear-gradient(100deg, #a62020 0%, #ffffff 100%);
             font-family: Arial, sans-serif;
             color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
-        h1, h2 {
+
+        h1 {
             text-align: center;
-            padding-top: 50px;
-            font-size: 2em;
+            font-size: 3em;
             color: #FFF;
-            text-shadow: 2px 2px 4px #000000;
-        }
-        p, div {
-            max-width: 500px;
-            margin: 20px auto;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 8px;
-        }
-        div h3 {
-            text-align: center;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1s ease-in-out;
             margin-bottom: 20px;
         }
-        div p {
-            margin-bottom: 10px;
+
+        p {
+            text-align: center;
+            margin: 0;
+            font-size: 1.2em;
+            animation: slideIn 1s ease-in-out;
         }
+
+        .highlight {
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #930e53;
+            background: linear-gradient(45deg, #ffffff, #c4c4c4);
+            background-size: 200% 200%;
+            animation: pulse 2s infinite;
+            padding: 4px 8px;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        @keyframes pulse {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         button {
-            display: block;
-            width: 100px;
-            padding: 10px;
+            display: inline-block;
+            padding: 12px 24px;
             margin: 20px auto;
-            color: white;
-            background: #333;
+            font-size: 1.2em;
+            color: #FFF;
+            background: #272727;
             border: none;
             border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
+            animation: fadeIn 1s ease-in-out;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
         }
+
         button:hover {
-            background: #666;
+            background: #ff6347;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to   { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
 <body>
     <h1>Welcome to Personalised Perfumes</h1>
-    <p>Create your own aroma by taking our quiz!</p>
+    <p><span class="highlight">Create your own aroma by taking our quiz!</span></p>
     <button onclick="location.href='quiz.html'">Start Quiz</button>
-
-    <!-- Product details -->
-    <h2>Our Fragrances</h2>
-    <div>
-        <h3>Citrus</h3>
-        <p>Fresh, light.</p>
-    </div>
-    <div>
-        <h3>Green</h3>
-        <p>Fresh, herbal scent.</p>
-    </div>
-    <!-- Add more fragrance descriptions here -->
-
-    <!-- Add more bottle sizes and prices here -->
 </body>
 </html>

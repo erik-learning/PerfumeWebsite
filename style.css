@@ -8,6 +8,24 @@ body {
     color: #333;
 }
 
+.price-and-next {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price-and-next .price {
+    flex-grow: 1;
+}
+
+.price {
+    color: green;
+}
+
+.price-and-next button {
+    margin-left: auto;
+}
+
 #prev {
     width: 100px;
     position: absolute;
@@ -25,12 +43,12 @@ body {
 }
 
 #bottle-slider {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    position: relative;
-    margin-top: 20px;
+    margin-top: 40px;
     height: 300px; /* Adjust height as needed */
 }
 
@@ -40,10 +58,8 @@ body {
     font-size: 2em;
     cursor: pointer;
     color: #333;
-    opacity: 0.7;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    opacity: 1;
+    margin-top: 20px;
 }
 
 #bottle-slider button:hover {
@@ -52,14 +68,54 @@ body {
 
 .bottle-option {
     flex: 0 0 auto;
-    width: 100px; /* adjust as needed */
+    width: 300px; /* adjust as needed */
     text-align: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    position: absolute; /* Position the bottle at the same place */
+    left: 50%; /* Center the bottle horizontally */
+    transform: translateX(-50%); /* This will ensure the center of the image is at the center of the slider */
 }
 
 .bottle-option.active {
     opacity: 1;
+}
+
+.bottle-info {
+    position: absolute;
+    bottom: -90px; /* Position the info at the bottom of the bottle */
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.6); /* Semi-transparent black background */
+    color: #fff; /* White text */
+    padding: 5px;
+    border-radius: 5px;
+    animation: fadeIn 1s ease-in-out;
+}
+
+.bottle-info .ml,
+.bottle-info .price {
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+}
+
+.bottle-info .ml {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.bottle-info .price {
+    font-size: 1.2em;
+    color: #e7c60e; /* Gold color for price */
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
 }
 
 .bottle-option img {
@@ -71,7 +127,6 @@ body {
     text-align: center;
 }
 
-
 h1 {
     text-align: center;
     padding-top: 50px;
@@ -79,17 +134,17 @@ h1 {
     color: #FFF;
     text-shadow: 2px 2px 4px #000000;
 }
-
 .question {
     max-width: 1000px;
     margin: 50px auto;
     background: rgba(255, 255, 255, 0.8);
     padding: 20px;
     border-radius: 8px;
-    animation: fadeIn 1s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    animation: fadeIn 1s ease;
 }
 
 .question h2 {
@@ -105,30 +160,6 @@ h1 {
 
 .question label:hover {
     background-color: #ddd;
-}
-
-#result {
-    max-width: 300px;
-    margin: 0 auto;
-    position: relative;
-    animation: pulse 2s infinite;
-}
-
-#perfumeLabel {
-    position: absolute;
-    top: 250px;  /* adjust as needed */
-    transform: translateX(100%) rotateX(50deg);
-    font-size: 2em;  /* adjust as needed */
-    text-align: left;
-    width: 10%;
-    z-index: 1;
-    color: #000;  /* adjust as needed */
-}
-svg {
-    position: absolute;
-    top: 90%;  /* adjust as needed */
-    left: 39%;  /* adjust as needed */
-    transform: translate(-50%, -50%); /* centers the SVG */
 }
 
 #error {
@@ -154,8 +185,6 @@ button:hover {
     transform: scale(1.05);
 }
 
-
-
 input[type="text"] {
     width: 100%;
     padding: 10px;
@@ -170,19 +199,174 @@ input[type="text"]:focus {
     box-shadow: 0 0 5px #333;
 }
 
+/* Style for the aroma options buttons */
+.aroma-option {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Style for the selected aroma option */
+.aroma-option.selected {
+    background-color: #4CAF50; /* Choose the color you prefer */
+    color: #fff;
+}
+
 #result {
-    position: relative;
+    max-width: 1000px;
+    margin: 50px auto;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 1s ease;
+}
+
+.result-heading {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.result-body {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.result-footer {
+    font-size: 1.2em;
+    color: #cbac00; /* Gold color for price */
+}
+
+.result-image {
     width: 300px;
     height: 300px;
+    margin: 0 auto;
+    position: relative;
 }
 
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
+.result-image img {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.01); }
-    100% { transform: scale(1); }
+
+#perfumeNameOnBottle {
+    position: absolute;
+    z-index: 1;
+    top: 200px;  /* Adjust as needed */
+    left: 50%;
+    transform: translateX(-50%) rotate(-90deg);
+    color: #000;  /* Adjust color as needed */
+    font-size: 1.2rem;  
+    font-style: oblique;
+    text-align: center;
+}
+
+/* Question 2 */
+#question2 {
+    position: relative; /* Position the question container */
+    background: linear-gradient(135deg, #e6e6e6, #f9f9f9); /* Add a gradient background */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+#perfumeName {
+    animation: shake 0.8s infinite; /* Add shaking animation to the input field */
+    font-size: 1.5em;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+    width: 100%;
+    max-width: 300px;
+}
+
+@keyframes shake {
+    0%, 2% { transform: translateX(0); }
+    1%, 3%, 5%, 7%, 9% { transform: translateX(-1px); }
+    2%, 4%, 6%, 8% { transform: translateX(1px); }
+}
+
+#perfumeLabel {
+    position: absolute;
+    top: 50%; /* Position the label vertically in the middle */
+    left: 50%; /* Position the label horizontally in the middle */
+    transform: translate(-50%, -50%) rotate(-45deg); /* Rotate the label */
+    font-size: 1.5em;
+    color: #000; /* Adjust color as needed */
+}
+
+/* Adjust the button style */
+#question2 button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+/* Add a hover effect to the button */
+#question2 button:hover {
+    background-color: #666;
+    transform: scale(1.05);
+}
+
+/* Add a subtle pulsating animation to the button */
+#question2 button {
+    animation: pulse 1.5s infinite;
+}
+
+/* Question 3 */
+#question3 {
+    position: relative; /* Position the question container */
+    background: linear-gradient(135deg, #e6e6e6, #f9f9f9); /* Add a gradient background */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+}
+
+#question3 h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+label:hover {
+    background-color: #ddd;
+}
+
+input[type="radio"] {
+    margin-right: 10px;
+}
+
+/* Question 1 and Question 4 */
+#question1,
+#question4 {
+    background: linear-gradient(135deg, #e6e6e6, #f9f9f9);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }

@@ -1,75 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Perfume Quiz</title>
+    <title>Тест на Парфюм</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>Create Your Own Aroma</h1>
+    <h1>Создайте свой аромат</h1>
 
     <div id="error"></div>
 
-    <!-- Question 1 -->
-    <!-- Question 1 -->
+    <!-- Вопрос 1 -->
     <div class="question" id="question1">
-      <h2>Which bottle would you choose?</h2>
-      <div id="bottle-slider">
-          <button id="prev" onclick="slideBottles(-1)">&#10094;</button>
-          <div class="bottle-option active" onclick="selectBottle(0)">
-            <img src="1.png" alt="15ml">
-            <p>15ml</p>
-          </div>
-          <div class="bottle-option" onclick="selectBottle(1)">
-            <img src="2.png" alt="20ml">
-            <p>20ml</p>
-          </div>
-          <div class="bottle-option" onclick="selectBottle(2)">
-            <img src="3.png" alt="50ml">
-            <p>50ml</p>
-          </div>
-          <div class="bottle-option" onclick="selectBottle(3)">
-            <img src="4.png" alt="100ml">
-            <p>100ml</p>
-          </div>
-          <button id="next" onclick="slideBottles(1)">&#10095;</button>
-      </div>
-      <button onclick="validateAndProceed(1, 2)">Next</button>
+        <h2>Какую флакон вам подходит?</h2>
+        <div id="bottle-slider">
+            <button id="prev" onclick="slideBottles(-1)">&#10094;</button>
+            <div class="bottle-option active" onclick="selectBottle(0)" data-price="8000" data-ml="15">
+                <div class="bottle-info">
+                    <p>15 мл</p>
+                    <p class="price">8000₸</p>
+                </div>
+                <img src="1.png" alt="15 мл">
+            </div>
+            <div class="bottle-option" onclick="selectBottle(1)" data-price="10000" data-ml="20">
+                <div class="bottle-info">
+                    <p>20 мл</p>
+                    <p class="price">10000₸</p>
+                </div>
+                <img src="2.png" alt="20 мл">
+            </div>
+            <div class="bottle-option" onclick="selectBottle(2)" data-price="20000" data-ml="50">
+                <div class="bottle-info">
+                    <p>50 мл</p>
+                    <p class="price">20000₸</p>
+                </div>
+                <img src="3.png" alt="50 мл">
+            </div>
+            <div class="bottle-option" onclick="selectBottle(3)" data-price="35000" data-ml="100">
+                <div class="bottle-info">
+                    <p>100 мл</p>
+                    <p class="price">35000₸</p>
+                </div>
+                <img src="4.png" alt="100 мл">
+            </div>
+            <button id="next" onclick="slideBottles(1)">&#10095;</button>
+        </div>
+        <div class="price-and-next">
+            <p id="selectedBottlePrice" class="price"></p>
+            <button onclick="validateAndProceed(1, 2)">Далее</button>
+        </div>
     </div>
 
-
-
-
-    </div> <!-- This closing tag was missing -->
-
-    <!-- Question 2 -->
+    <!-- Вопрос 2 -->
     <div class="question" id="question2" style="display: none;">
-        <h2>How would you like to name your perfume?</h2>
-        <input type="text" id="perfumeName" placeholder="Enter perfume name">
-        <button onclick="validateAndProceed(2, 3)">Next</button>
+        <h2>Как вы бы хотели назвать свой парфюм?</h2>
+        <input type="text" id="perfumeName" placeholder="Введите название парфюма">
+        <button onclick="validateAndProceed(2, 3)">Далее</button>
     </div>
 
-    <!-- Question 3 -->
+    <!-- Вопрос 3 -->
     <div class="question" id="question3" style="display: none;">
-        <h2>Specify your skin type:</h2>
-        <label><input type="radio" name="skin" value="oily"> Oily</label><br>
-        <label><input type="radio" name="skin" value="dry"> Dry</label><br>
-        <label><input type="radio" name="skin" value="combination"> Combination</label><br>
-        <button onclick="validateAndProceed(3, 'result')">Create my perfume</button>
+        <h2>Укажите тип вашей кожи:</h2>
+        <label><input type="radio" name="skin" value="oily"> Жирная</label><br>
+        <label><input type="radio" name="skin" value="dry"> Сухая</label><br>
+        <label><input type="radio" name="skin" value="combination"> Комбинированная</label><br>
+        <button onclick="validateAndProceed(3, 4)">Далее</button>
     </div>
-    
-    <!-- Result -->
+
+    <!-- Вопрос 4 -->
+    <div class="question" id="question4" style="display: none;">
+        <h2>Выберите аромат:</h2>
+        <div id="options-container"></div>
+        <button id="create-perfume-button" onclick="validateAndProceed(4, 'result')">Далее</button>
+    </div>
+
+    <!-- Результат -->
     <div id="result" style="display: none;">
-        <img src="1.png" alt="Perfume bottle">
-        <svg width="200" height="200">
-          <path id="curve" d="M1,100 Q200, 150  600,-600" fill="transparent"/>
-          <text width="200">
-            <textPath id="curvedText" href="#curve">
-            </textPath>
-          </text>
-        </svg>
-        <div id="perfumeLabel"></div>
+        <h2 class="result-heading">Ваш персонализированный парфюм</h2>
+        <div class="result-image">
+            <div id="perfumeNameOnBottle"></div>
+            <img id="resultImg" src="" alt="Ваш выбранный парфюм">
+        </div>
+        <div class="result-body">
+            <p id="perfumeDescription"></p>
+            <p id="perfumePrice"></p>
+            <p id="perfumeML"></p>
+        </div>
+        <div class="result-footer">
+            <p>Спасибо, что воспользовались нашим сервисом! Вы можете заказать свой парфюм <a href="https://l.instagram.com/?u=https%3A%2F%2Fig.me%2Fm%2Fq.scent.kz&e=AT2wORTlgFLFMsxs9vVjMc7hyeSg9HwzKrKYvhIBNF9TNG7NFpmiz79U1DcgvnxuMLwpNskeyYg1QZ49P1-98TZzMmB-wF_2BxuFAw" target="_blank">этой ссылке</a>.</p>
+        </div>
     </div>
-    
+
     <script src="quiz-part.js"></script>
 </body>
 </html>
