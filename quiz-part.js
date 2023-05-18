@@ -156,7 +156,7 @@ function showResult() {
 
     // Отображаем описание парфюма
     var description = document.getElementById('perfumeDescription');
-    description.textContent = 'Вы выбрали бутылку с ароматом ' + selectedAroma + '.';
+    description.textContent = 'Вы выбрали парфюм с ароматом ' + selectedAroma + '.';
 
     // Отображаем цену и объем парфюма
     var price = document.getElementById('perfumePrice');
