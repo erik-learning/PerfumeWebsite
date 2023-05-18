@@ -212,7 +212,7 @@ input[type="text"]:focus {
 
 /* Style for the selected aroma option */
 .aroma-option.selected {
-    background-color: #e44343; /* Choose the color you prefer */
+    background-color: #b84949; /* Choose the color you prefer */
     color: #fff;
 }
 
