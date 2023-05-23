@@ -64,21 +64,36 @@ function validateAndProceed(currentQuestion, nextQuestion) {
             return;
         }
     }
+        if (currentQuestion === 4) {
+            // For question 4, ensure an aroma option is selected
+            if (!selectedAroma || selectedAroma === '') {
+                document.getElementById('error').innerText = 'Пожалуйста, выберите аромат перед продолжением.';
+                return;
+            }
+        }
+        if (currentQuestion === 5) {
+            // For question 5, ensure a phone number is entered
+            var phoneNumber = document.getElementById('phoneNumber').value;
+            if (!phoneNumber) {
+                document.getElementById('error').innerText = 'Пожалуйста, введите номер телефона перед продолжением.';
+                return;
+            }
+            // Optional: Add more validation for the phone number here, if necessary
+        }
 
-    // Очищаем сообщение об ошибке
+    // Clear the error message
     document.getElementById('error').innerText = '';
 
-    // Скрываем текущий вопрос
+    // Hide the current question
     document.getElementById('question' + currentQuestion).style.display = 'none';
-
-    // Показываем следующий вопрос или результат
-    if (nextQuestion === 'result') {
-        showResult();
-    } else if (nextQuestion === 4) {
+    if (nextQuestion === 4) {
         showQuestion4();
+    } else if (nextQuestion === 'result') {
+        showResult();
     } else {
         document.getElementById('question' + nextQuestion).style.display = 'block';
     }
+    
 }
 
 function showQuestion4() {

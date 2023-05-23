@@ -70,8 +70,16 @@
     <div class="question" id="question4" style="display: none;">
         <h2>Выберите аромат:</h2>
         <div id="options-container"></div>
-        <button id="create-perfume-button" onclick="validateAndProceed(4, 'result')">Далее</button>
+        <button id="create-perfume-button" onclick="validateAndProceed(4, 5)">Далее</button>
     </div>
+
+    <!-- Вопрос 5 -->
+    <div class="question" id="question5" style="display: none;">
+        <h2>What's your phone number?</h2>
+        <input type="tel" id="phoneNumber" name="phoneNumber" required>
+        <button onclick="validateAndProceed(5, 'result')">Далее</button>
+    </div>
+    
 
     <!-- Результат -->
     <div id="result" style="display: none;">

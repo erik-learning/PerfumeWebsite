@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Personalised Perfumes</title>
+    <title>Персонализированные духи</title>
     <style>
         body {
-            background: linear-gradient(100deg, #a62020 0%, #ffffff 100%);
+            background: linear-gradient(100deg, #700606 0%, #690743 100%);
             font-family: Arial, sans-serif;
             color: #333;
             display: flex;
@@ -27,28 +27,11 @@
         p {
             text-align: center;
             margin: 0;
-            font-size: 1.2em;
-            animation: slideIn 1s ease-in-out;
-        }
-
-        .highlight {
-            font-weight: bold;
-            font-size: 1.2em;
-            color: #930e53;
-            background: linear-gradient(45deg, #ffffff, #c4c4c4);
-            background-size: 200% 200%;
-            animation: pulse 2s infinite;
-            padding: 4px 8px;
-            border-radius: 4px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-            display: inline-block;
+            font-size: 3em;
+            color: #FFF;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+            animation: fadeIn 1s ease-in-out;
             margin-bottom: 20px;
-        }
-
-        @keyframes pulse {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
 
         button {
@@ -56,8 +39,9 @@
             padding: 12px 24px;
             margin: 20px auto;
             font-size: 1.2em;
-            color: #FFF;
-            background: #272727;
+            color: #000000;
+            background: #d6d6d6;
+            font-weight: bold;
             border: none;
             border-radius: 5px;
             cursor: pointer;
@@ -83,8 +67,8 @@
     </style>
 </head>
 <body>
-    <h1>Welcome to Personalised Perfumes</h1>
-    <p><span class="highlight">Create your own aroma by taking our quiz!</span></p>
-    <button onclick="location.href='quiz.html'">Start Quiz</button>
+    <h1>Добро пожаловать!</h1>
+    <p>Пройди тест и создай свой уникальный аромат</p>
+    <button onclick="location.href='quiz.html'">Начать тест</button>
 </body>
 </html>
