@@ -181,3 +181,8 @@ function showResult() {
 }
 
 
+// Add input listener to 'phoneNumber' field to allow only digits and '+' symbol
+document.getElementById('phoneNumber').addEventListener('input', function(e) {
+    var nonDigit = /[^\d+]/g;
+    e.target.value = e.target.value.replace(nonDigit, '');
+});
